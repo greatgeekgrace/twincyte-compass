@@ -18,7 +18,7 @@ The second half only works with Qloo: the taste matching, the cross-domain jump 
 ## What it does
 
 - **Gene → cell programs.** For ~9,900 genes in blood cells (K562) and ~2,400 in near-normal retinal cells (RPE1), the atlas shows effect size versus all genes tested, how much the gene was turned down, and which cell programs move: making proteins, ribosome building, DNA-damage alarm (p53), stress, cell division, energy, cholesterol, red-blood-cell identity.
-- **"Acts like" genes.** Genes whose knockdown leaves the most similar fingerprint. For RPS19 (Diamond-Blackfan anemia) these are other ribosomal proteins; for TCOF1 (Treacher Collins syndrome) they include POLR1C and POLR1E — genes behind the same syndrome, recovered from data alone.
+- **"Acts like" genes.** Genes whose knockdown leaves the most similar fingerprint. For RPS19 (Diamond-Blackfan anemia) these are other ribosomal proteins; for TCOF1 (Treacher Collins syndrome) they are parts of the RNA polymerase I machinery, including POLR1C — another gene behind the same syndrome — recovered from data alone.
 - **Plain-language explanation** written by the model only from the data and the NCBI gene summary, with **questions to bring to the care team** and trusted links (NCBI Gene, MedlinePlus Genetics, ClinicalTrials.gov).
 - **Support that fits**, chosen by the family's favourites:
   - *To read* — books tagged rare disease, chronic or childhood illness, caregiver support;
