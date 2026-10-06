@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twincyte Compass</title>
+<meta name="description" content="A companion for rare-disease families: what the gene does inside a human cell, in plain words, and support that fits your family's taste — grounded in Qloo's taste graph.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='25' cy='32' r='17' fill='%230e8c7e'/><circle cx='39' cy='32' r='17' fill='none' stroke='%235f4fd1' stroke-width='4' stroke-dasharray='5 4'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/">
+    <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><circle cx="25" cy="32" r="17" fill="var(--teal)"/><circle cx="39" cy="32" r="17" fill="none" stroke="var(--violet)" stroke-width="4" stroke-dasharray="5 4"/></svg>
+    <span>Twincyte <b>Compass</b></span>
+  </a>
+  <span class="tag">for rare-disease families · grounded in Qloo + cell data</span>
+</header>
+
+<section id="start" class="start">
+  <div class="hero">
+    <p class="eyebrow">After the diagnosis</p>
+    <h1>Understand the gene.<br><em>Find what helps — your way.</em></h1>
+    <p class="lede">When a rare diagnosis arrives, families get a gene name and a pile of jargon. Twincyte Compass explains, in plain words, what that gene does inside a human cell — from real lab data — and then finds the books, podcasts, films and calm places that fit <i>your</i> family, using Qloo's taste graph.</p>
+    <ul class="promise">
+      <li><b>Inside the cell</b> — what changes when this gene is turned down, measured in human cells.</li>
+      <li><b>Support that fits</b> — every pick explained by what you already love.</li>
+      <li><b>Questions to bring</b> — to your next appointment.</li>
+    </ul>
+    <p class="fine">Not medical advice. Cell data comes from lab cell lines, not from any patient.</p>
+  </div>
+
+  <form id="setup" class="card setup">
+    <fieldset>
+      <legend>Who is this for?</legend>
+      <div class="seg" id="reader">
+        <button type="button" data-r="parent" class="on">I'm a parent or carer</button>
+        <button type="button" data-r="self">It's me</button>
+        <button type="button" data-r="family">A relative or friend</button>
+      </div>
+    </fieldset>
+    <div class="two">
+      <label>Gene <small>(from the genetic report)</small>
+        <input id="gene" list="geneList" placeholder="e.g. RPS19" maxlength="20" autocomplete="off" autocapitalize="characters">
+        <datalist id="geneList"></datalist>
+      </label>
+      <label>Condition <small>(optional)</small>
+        <input id="condition" placeholder="e.g. Diamond-Blackfan anemia" maxlength="120" autocomplete="off">
+      </label>
+    </div>
+    <label>Where you live <small>(for calm places nearby)</small>
+      <input id="city" placeholder="e.g. Boston" maxlength="80" autocomplete="off">
+    </label>
+    <fieldset>
+      <legend>Things your family loves <small>(3–6 works best)</small></legend>
+      <div class="kinds" id="kinds">
+        <button type="button" data-k="movie" class="on">🎬 Film</button>
+        <button type="button" data-k="tv_show">📺 TV</button>
+        <button type="button" data-k="book">📚 Book</button>
+        <button type="button" data-k="artist">🎵 Music</button>
+        <button type="button" data-k="podcast">🎙️ Podcast</button>
+        <button type="button" data-k="place">☕ A place</button>
+      </div>
+      <div class="adder"><input id="favInput" placeholder="e.g. My Neighbor Totoro" maxlength="120" autocomplete="off"><button type="button" id="addFav" class="ghost">Add</button></div>
+      <ul id="favs" class="favs"></ul>
+    </fieldset>
+    <p class="hint">See how it works: <button type="button" class="link" id="sample">try an example family</button></p>
+    <button class="primary big" id="go" type="submit">Build our compass</button>
+  </form>
+
+  <section id="confirm" class="card confirm" hidden>
+    <h2>Did we find the right ones?</h2>
+    <p class="hint">We matched your favourites in Qloo's taste graph. Pick the right one or drop it.</p>
+    <div id="matches" class="matches"></div>
+    <div class="row"><button class="ghost" id="back">Back</button><button class="primary big" id="build">Build our compass</button></div>
+  </section>
+</section>
+
+<section id="compass" class="compass" hidden>
+  <div class="c-head card">
+    <div>
+      <p class="eyebrow" id="cCondition"></p>
+      <h1 id="cTitle"></h1>
+      <p class="lede" id="cHeadline"></p>
+    </div>
+    <button class="ghost" id="restart">Start over</button>
+  </div>
+
+  <div class="grid">
+    <div class="col">
+      <article class="card cellcard" id="cellCard">
+        <div class="cc-head"><h2>Inside the cell</h2><div class="tabs" id="lineTabs"></div></div>
+        <p id="geneJob" class="job"></p>
+        <div id="effect" class="effect"></div>
+        <div id="bars" class="bars" role="img" aria-label="Cell programs that change when the gene is turned down"></div>
+        <ul id="cellStory" class="story"></ul>
+        <p id="family" class="familynote"></p>
+        <div id="actsLike" class="chips"></div>
+        <details class="genes"><summary>Most changed genes</summary><div id="geneLists"></div></details>
+        <div class="qs" id="qsBox"><h3>Questions to bring to your care team</h3><ol id="qs"></ol></div>
+        <p class="links" id="links"></p>
+        <p class="disclaimer" id="disclaimer"></p>
+      </article>
+      <div id="sections"></div>
+    </div>
+    <aside class="col side">
+      <div class="card chat">
+        <h2>Ask Compass</h2>
+        <div id="log" class="log"></div>
+        <div class="chips ask" id="chips">
+          <button>Explain this to my 7-year-old using things she loves</button>
+          <button>A book for the first weeks after diagnosis</button>
+          <button>Somewhere calm to take the family this weekend</button>
+        </div>
+        <form id="chatForm" class="composer"><input id="chatInput" placeholder="Ask anything…" maxlength="500" autocomplete="off"><button class="primary" aria-label="Send">→</button></form>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div id="loading" class="loading" hidden><div class="cells"><span></span><span></span></div><p id="loadingText">Working…</p></div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+<footer>Twincyte Compass · cell data: Replogle et al., <i>Cell</i> 2022 · recommendations: <a href="https://www.qloo.com" target="_blank" rel="noopener">Qloo</a> · gene summaries: NCBI via MyGene.info · <a href="https://github.com/greatgeekgrace/twincyte-compass" target="_blank" rel="noopener">source</a><br>Not medical advice.</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>
