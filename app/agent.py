@@ -24,7 +24,7 @@ PODCAST_QUERIES = {
     "family": ["caregiver", "rare disease", "chronic illness", "grief"],
 }
 TOPIC = re.compile(r"rare (disease|life)|ultra rare|illness|disease|disab|special needs|unique needs|caregiv|carer|patient|medical|chronic|epilep|autism|grief", re.I)
-AVOID = re.compile(r"essential oil|holistic|natural remed|\bcure\b|heal (your|chronic)|detox|guitar|medium rare|steak|wine", re.I)
+AVOID = re.compile(r"essential oil|holistic|natural remed|\bcure\b|heal (your|chronic)|healing|detox|medical medium|lyme|anti-?vax|miracle|naturopath|functional medicine|guitar|medium rare|steak|wine", re.I)
 AVOID_PLACE = re.compile(r"cemetery|graveyard|burying ground|holocaust|funeral|crematori|memorial(?! (library|hall|park|garden|hospital))", re.I)
 
 READERS = {
